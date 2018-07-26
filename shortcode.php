@@ -3,7 +3,7 @@
 function testimonials_shortcode($atts) {
 
 	$atts = shortcode_atts([
-		'id' => '7'
+		'id' => 'client_testimonials'
 		], $atts, 'belbo');
 
 	$args = [
