@@ -10,7 +10,9 @@ function create_post_type() {
 		],
 		'public' => true,
 		'has_archive' => true,
-		'taxonomies' => ['branch', 'location', 'products']
+		'taxonomies' => ['branch', 'location', 'products'],
+		'supports' => ['editor', 'thumbnail', 'custom-fields'
+		]
 	]);
 }
 add_action('init', 'create_post_type');

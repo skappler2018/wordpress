@@ -16,12 +16,39 @@ function testimonials_shortcode($atts) {
 	while($loop->have_posts()) {
 		$loop->the_post();
 		?>
-		<div class="entry-content">
-			<?php the_title(); ?>
-			<?php the_content(); ?>
-		</div>
+			<div class="entry-content">
+				<div class"title">
+					<?php 
+						the_title(); 
+					?>
+				</div>
+				<div class="name">
+					<?php
+						echo get_post_meta( get_the_ID(), 'Vorname', true );
+						echo " ".get_post_meta( get_the_ID(), 'Nachname', true );
+					?>
+				</div>
+				<div class="store">
+					<?php
+						echo " ".get_post_meta( get_the_ID(), 'Unternehmen', true );
+					?>
+				</div>			
+				<div>
+					<?php 
+						the_content(); 
+					?>
+				</div>
+			</div>
 		<?php	
 	}		
 	return ob_get_clean();
 }
 add_shortcode('belbo', 'testimonials_shortcode');
+
+
+
+
+
+
+
+

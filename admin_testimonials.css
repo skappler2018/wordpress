@@ -1,0 +1,24 @@
+.name {
+	display: inline-block;
+	font-weight: bold;
+}
+
+.fields {
+	display: grid;
+	grid-template-columns: 150px auto;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
