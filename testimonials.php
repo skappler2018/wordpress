@@ -1,13 +1,11 @@
 <?php
 
 /*
-Plugin Name: Testimonials
-Plugin URI: localhost/wordpress/wp-content/plugins/testimonials/testimonials.php
-Description: Test
+Plugin Name: Filterable Testimonials
+Description: Test111
 Author: sk
 Version: 1.0
 Author URI: https://belbo.com
-Text Domain: Test
 */	
 
 include('shortcode.php');
@@ -33,13 +31,25 @@ add_action('wp_enqueue_scripts', 'register_plugin_styles_frontend');
 function create_taxonomies() {
 	
 	register_taxonomy('branch', 'testimonials', [
-		'label' => __('Branche')
+		'label' => __('Branche'), 
+		'public' => true, 
+		'publicly_queryable' => true, 
+		'show_ui' => true, 
+		'show_in_nav_menus' => true
 	]);
 	register_taxonomy('location', 'testimonials', [
-		'label' => __('Standort')
+		'label' => __('Standort'),
+		'public' => true, 
+		'publicly_queryable' => true, 
+		'show_ui' => true, 
+		'show_in_nav_menus' => true
 	]);
 	register_taxonomy('products', 'testimonials', [
-		'label' => __('Produkte')
+		'label' => __('Produkte'),
+		'public' => true, 
+		'publicly_queryable' => true, 
+		'show_ui' => true, 
+		'show_in_nav_menus' => true
 	]);
 }
 add_action('init', 'create_taxonomies');

@@ -43,8 +43,22 @@ function testimonials_shortcode($atts) {
 	}		
 	return ob_get_clean();
 }
-add_shortcode('belbo', 'testimonials_shortcode');
+add_shortcode('belbo', 'testimonials_shortcode'); // Function to register a shortcode handler.
 
+/* // Shortcode für die Filter-Tags
+function tags_shortcode() {
+	
+	ob_start();
+	?>
+		<div> 
+			<?php
+				echo add_action('init', 'create_taxonomies');
+			?>
+		<div>
+	<?php
+	return ob_get_clean();
+}
+add_shortcode('tags','tags_shortcode'); */
 
 
 
