@@ -14,7 +14,7 @@ include('custom_post_type.php');
 // Eigene CSS-Datei einbinden (admin_testimonials.css)
 function register_plugin_styles_admin() {
 	
-		wp_register_style('admin_testimonials', plugins_url('testimonials/admin_testimonials.css'));
+		wp_register_style('admin_testimonials', plugins_url('filterable-testimonials/admin_testimonials.css'));
 		wp_enqueue_style('admin_testimonials');
 }
 add_action('admin_enqueue_scripts', 'register_plugin_styles_admin');
@@ -22,7 +22,7 @@ add_action('admin_enqueue_scripts', 'register_plugin_styles_admin');
 // Eigene CSS-Datei einbinden (frontend_testimonials.css)
 function register_plugin_styles_frontend() {
 	
-		wp_register_style('frontend_testimonials', plugins_url('testimonials/frontend_testimonials.css'));
+		wp_register_style('frontend_testimonials', plugins_url('filterable-testimonials/frontend_testimonials.css'));
 		wp_enqueue_style('frontend_testimonials');
 }
 add_action('wp_enqueue_scripts', 'register_plugin_styles_frontend'); 
@@ -74,19 +74,19 @@ function custom_meta_box_html($testimonials){
     ?>
 		<div class="fields">
 			<div><label for="first_name">Vorname</label></div>
-			<div><input type="text id="first_name"></div>
+			<div><input type="text" id="first_name" value="<?php echo get_post_meta($testimonials->ID, 'first_name', true); ?>"></div>
 		</div>
 		<div class="fields">
 			<label for="last_name">Nachname</label>
-			<input type="text id="last_name">
+			<input type="text id="last_name" value="<?php echo get_post_meta($testimonials->ID, 'last_name', true); ?>">
 		</div>
 		<div class="fields">
 			<label for="store">Unternehmen</label>
-			<input type="text id="store">
+			<input type="text id="store" value="<?php echo get_post_meta($testimonials->ID, 'store', true); ?>">
 		</div>
 		<div class="fields">
 			<label for="url">URL</label>
-			<input type="text id="url">
+			<input type="text id="url" value="<?php echo get_post_meta($testimonials->ID, 'url', true); ?>">
 		</div>
 		<div class="fields">
 			<label for="logo">Logo</label>
@@ -104,9 +104,8 @@ function custom_meta_box_html($testimonials){
 }
 add_action('add_meta_boxes', 'add_custom_meta_box');
 
-		
-		
 
+	
 
 		
 		
