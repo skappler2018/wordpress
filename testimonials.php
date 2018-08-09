@@ -85,6 +85,10 @@ function custom_meta_box_html($testimonials){
 			<input type="text id="store" value="<?php echo get_post_meta($testimonials->ID, 'store', true); ?>">
 		</div>
 		<div class="fields">
+			<label for="location">Standort</label>
+			<input type="text id="location" value="<?php echo get_post_meta($testimonials->ID, 'location', true); ?>">
+		</div>
+		<div class="fields">
 			<label for="url">URL</label>
 			<input type="text id="url" value="<?php echo get_post_meta($testimonials->ID, 'url', true); ?>">
 		</div>

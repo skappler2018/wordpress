@@ -11,7 +11,7 @@ function create_post_type() {
 		'public' => true,
 		'has_archive' => true,
 		'taxonomies' => ['branch', 'location', 'products'],
-		'supports' => ['editor', 'thumbnail', 'custom-fields'
+		'supports' => ['editor', 'thumbnail', 'custom-fields', 'title'
 		]
 	]);
 }
