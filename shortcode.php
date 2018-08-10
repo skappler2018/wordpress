@@ -15,16 +15,37 @@
 	$terms = get_terms('location'); // Retrieve the terms in a given taxonomy ?>
 	
 	<div> <!-- Drop-down box -->
-		<select onchange="filterTestimonials()">  
-			<option value="">Bitte auswählen!</option><?php
-			foreach($terms as $term){ ?>
-				<option value="$term"><?php echo $term->name; ?></option> <?php
-			} ?>
-		</select> <?php
+		<div class="all-testimonials">
+			<button class="button">Alle Referenzen</button>
+		</div>
+		<div class="select-box">
+			<select>  
+				<option value="">Auswahl nach Standort</option><?php
+				foreach($terms as $term){ ?>
+					<option value="<?php echo $term->name; ?>"><?php echo $term->name; ?></option> <?php
+				} ?>
+			</select>
+		</div>
+		<div class="select-box">
+			<select>  
+				<option value="">Auswahl nach Branche</option><?php
+				foreach($terms as $term){ ?>
+					<option value="<?php echo $term->name; ?>"><?php echo $term->name; ?></option> <?php
+				} ?>
+			</select>
+		</div>
+		<div class="select-box">
+			<select>  
+				<option value="">Auswahl nach Produkt</option><?php
+				foreach($terms as $term){ ?>
+					<option value="<?php echo $term->name; ?>"><?php echo $term->name; ?></option> <?php
+				} ?>
+			</select> 
+		</div><?php
 		
 		while($loop->have_posts()) { // Loop through posts
 			$loop->the_post(); ?>
-			<div class="entry-content">
+			<div class="testimonial-content <?php echo get_post_meta( get_the_ID(), 'Standort', true ); ?>">
 				<div class="title"><?php 
 					the_title(); ?>
 				</div>
@@ -40,7 +61,10 @@
 				</div>
 				<div><?php 
 					the_content(); ?>
+					        <?php the_post_thumbnail(); ?>
+
 				</div>
+				<iframe width="560" height="315" src="https://www.youtube.com/embed/IcumSRaSoqk" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 			</div><?php
 		} ?>
 	</div><?php
