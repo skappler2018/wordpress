@@ -27,16 +27,13 @@
 	
 <script type="text/javascript">
 
-$("select").change(function(){
-	
+$("form").submit(function(){ // Alle Referenzen anzeigen lassen
 	$(".testimonial-content").show();
-	
-	if ($(this).val() == 'München') {
-		$(".testimonial-content.Wien").hide();
-	}
-	if ($(this).val() == 'Wien') {
-		$(".testimonial-content.München").hide();
-	}
+}); 
+
+$("select").change(function(){ // Filtern nach Ort
+	$(".testimonial-content").hide();
+	$(".testimonial-content." + $(this).val()).show();
 });
 
 </script>

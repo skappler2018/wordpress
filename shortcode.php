@@ -16,7 +16,9 @@
 	
 	<div> <!-- Drop-down box -->
 		<div class="all-testimonials">
-			<button class="button">Alle Referenzen</button>
+			<form>
+				<input class="button" type="submit" value="Alle Referenzen">
+			</form>
 		</div>
 		<div class="select-box">
 			<select>  
