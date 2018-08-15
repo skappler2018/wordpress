@@ -149,6 +149,52 @@ function saving_postmeta_data($testimonials) {
 	
 }
 add_action('save_post', 'saving_postmeta_data');
+
+
+// Erstellung einer Plugin-Admin-Seite
+
+function register_mysettings() {
+  register_setting('belbo-option-group', 'beispiel');
+}
+
+function my_plugin_menu() {
+	
+	// add_options_page($page_title, $menu_title, $capability, $menu_slug, $function);
+	// Description: Add sub menu page the Settings menu.
+	// Frage: Wo erscheint $page_title ?
+	// The capability manage_options is one of many capabilities of Administrators.
+	// $function is the function to be called to output the content for this page.
+	
+    add_options_page('Belbo Verknüpfung', 'Belbo', 'manage_options', 'belbo-booking', 'my_plugin_options'); 
+}
+function my_plugin_options() {
+	if (!current_user_can('manage_options'))  {
+		wp_die( __('You do not have sufficient permissions to access this page.'));
+	}
+	
+	//The setting fields will know which settings your options page will handle.
+	settings_fields('belbo-option-group' );
+	
+	// This function replaces the form-field markup in the form itself.
+	do_settings_sections('belbo-option-group'); ?>
+	
+	<div class="wrap">
+		<p>Meine Tolle Pluginseite</p>
+		<form method="post" action="options.php">
+			<table class="form-table belbo-booking">
+				<tr valign="top">
+					<th scope="row">Beispiel Einstellung</th>
+					<td><input type="text" name="beispiel" value="<?php echo esc_attr( get_option('beispiel') ); ?>" /></td>
+				</tr>
+			</table>
+		</form>
+	</div><?php
+    submit_button();
+}
+add_action('admin_menu', 'my_plugin_menu');
+
+
+
 	
 
 		
