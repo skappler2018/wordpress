@@ -36,6 +36,10 @@ $("select").change(function(){ // Filtern
 	$(".testimonial-content." + $(this).val()).show();
 });
 
+function test() {
+	alert("hello");
+};
+
 </script>
 
 </body>
