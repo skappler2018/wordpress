@@ -42,38 +42,64 @@ function my_plugin_options() {
 			<table class="form-table belbo-booking">
 				<tr valign="top">
 					<th scope="row">Hintergrundfarbe</th>
-					<td><input type="text" name="background-color" value="<?php echo esc_attr(get_option('background-color')); ?>"></td>
+					<td>
+						<input type="text" name="background-color" value="<?php echo esc_attr(get_option('background-color')); ?>">
+					</td>
 				</tr>
 			</table>
 			
 			<table class="form-table belbo-booking">
 				<tr valign="top">
 					<th scope="row">Schriftfarbe</th>
-					<td><input type="text" name="color" value="<?php echo esc_attr(get_option('color')); ?>"></td>
+					<td>
+						<input type="text" name="color" value="<?php echo esc_attr(get_option('color')); ?>">
+					</td>
 				</tr>
 			</table>
-			
+					
+			<!-- following table loeschen -->		
+					
 			<table class="form-table belbo-booking">
 				<tr valign="top">
 					<th scope="row">Anzahl der Spalten</th>
-					<td><input type="text" name="color" value="<?php echo esc_attr(get_option('columns')); ?>"></td>
-					
-					<!--
-						To-do:
-						irgendwas funktioniert nicht mehr beim Speichern der Schriftfarbe und Anzahl der Spalten
-						work on Select box
-					-->
-					
-					<!-- <td>
-						<select>
-							<option selected="selected">Aktuelle Einstellung: <?php echo esc_attr(get_option('columns')); ?> </option>
+					<td>
+						<select name="columns">
+							<option hidden selected><?php echo esc_attr(get_option('columns')); ?></option>
 							<option>1</option>
 							<option>2</option>
 							<option>3</option>
 						<select>
-					</td> -->
+					</td> 
 				</tr>
-			</table> <?php
+			</table> 
+			
+			<!-- for optiones selected schleife reinbasteln -->
+			<!-- following table in process -->
+			
+			<table class="form-table belbo-booking">
+				<tr valign="top">
+					<th scope="row">Anzahl der Spalten</th>
+					<td>
+						<select name="columns">
+							<option><?php 
+								if (esc_attr(get_option('columns')) == 1) {
+									echo esc_attr(get_option('columns')); 
+								}?>
+							</option>
+							<option><?php 
+								if (esc_attr(get_option('columns')) == 2) {
+									echo esc_attr(get_option('columns')); 
+								}?>
+							</option>
+							<option><?php 
+								if (esc_attr(get_option('columns')) == 3) {
+									echo esc_attr(get_option('columns')); 
+								}?>
+							</option>
+						<select>
+					</td> 
+				</tr>
+			</table><?php
 
 			submit_button(); ?>
 			
