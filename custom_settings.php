@@ -2,7 +2,7 @@
 // Erstellung einer Custom-Settings-Seite
 
 function my_plugin_menu() {
-    add_options_page('Belbo Verknüpfung', 'Belbo', 'manage_options', 'belbo-booking', 'my_plugin_options');
+    add_options_page('Belbo Verknüpfung', 'Plugin zur Verwaltung von Kundenreferenzen', 'manage_options', 'belbo-booking', 'my_plugin_options');
 }
 
 if (is_admin()) {
@@ -28,7 +28,7 @@ function my_plugin_options() {
 		
     <div class="wrap">
 	
-		<h2>Plugin Kundenreferenzen</h2>
+		<h2>Einstellungen für Plugin zur Verwaltung von Kundenreferenzen</h2>
      
 		<form method="post" action="options.php"> <?php
 		
@@ -57,49 +57,28 @@ function my_plugin_options() {
 				</tr>
 			</table>
 					
-			<!-- following table loeschen -->		
-					
 			<table class="form-table belbo-booking">
 				<tr valign="top">
 					<th scope="row">Anzahl der Spalten</th>
 					<td>
-						<select name="columns">
-							<option hidden selected><?php echo esc_attr(get_option('columns')); ?></option>
-							<option>1</option>
-							<option>2</option>
-							<option>3</option>
-						<select>
-					</td> 
+						<select name="columns" selected="<?php echo esc_attr(get_option('columns')); ?>"> <?php
+							$options = array(		// Options als Array dargestellt
+								'option1' => '1',
+								'option2' => '2',
+								'option3' => '3'
+							);
+							foreach($options as $option) {
+								
+								
+								
+								
+								($option == esc_attr(get_option('columns'))) ? 'selected' : ''; ?>
+									<option> <?php echo $option; ?> </option> <?php
+							} ?>
+						</select>
+					</td>
 				</tr>
-			</table> 
-			
-			<!-- for optiones selected schleife reinbasteln -->
-			<!-- following table in process -->
-			
-			<table class="form-table belbo-booking">
-				<tr valign="top">
-					<th scope="row">Anzahl der Spalten</th>
-					<td>
-						<select name="columns">
-							<option><?php 
-								if (esc_attr(get_option('columns')) == 1) {
-									echo esc_attr(get_option('columns')); 
-								}?>
-							</option>
-							<option><?php 
-								if (esc_attr(get_option('columns')) == 2) {
-									echo esc_attr(get_option('columns')); 
-								}?>
-							</option>
-							<option><?php 
-								if (esc_attr(get_option('columns')) == 3) {
-									echo esc_attr(get_option('columns')); 
-								}?>
-							</option>
-						<select>
-					</td> 
-				</tr>
-			</table><?php
+			</table> <?php
 
 			submit_button(); ?>
 			

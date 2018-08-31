@@ -49,6 +49,8 @@
 			</div>
 		</div>
 		
+		<!-- Anzeige aller Referenzen -->
+		
 		<!-- <div class="all-testimonials" style="grid-template-columns: 1fr 1fr 1fr;"> -->
 		<div class="all-testimonials grid-<?php echo esc_attr(get_option('columns')); ?>"> <?php
 		
@@ -75,15 +77,18 @@
 				
 				?>
 				<div class="testimonial-content <?php echo $locationAsCSSClass . " " . $branchAsCSSClass . " " . $productsAsCSSClass; ?>">
+					<div class="logo"><?php
+						echo get_post_meta( get_the_ID(), 'logoToUpload', true ); ?>
+					</div>
 					<div class="title"><?php 
 						the_title(); ?>
 					</div>
 					<div class="name"><?php
-						echo get_post_meta( get_the_ID(), 'Vorname', true );
-						echo " ".get_post_meta( get_the_ID(), 'Nachname', true ); ?>
+						echo get_post_meta( get_the_ID(), 'first_name', true );
+						echo " ".get_post_meta( get_the_ID(), 'last_name', true ); ?>
 					</div>
 					<div class="store"><?php
-						echo " ".get_post_meta( get_the_ID(), 'Unternehmen', true ); ?>
+						echo " ".get_post_meta( get_the_ID(), 'store', true ); ?>
 					</div>
 					<div class="location"><?php
 						echo " ".get_post_meta( get_the_ID(), 'Standort', true ); ?>
@@ -92,7 +97,7 @@
 						the_content(); ?>
 								<?php the_post_thumbnail(); ?>
 					</div>
-					<iframe width="560" height="315" src="https://www.youtube.com/embed/IcumSRaSoqk" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+					<iframe width="789" height="337" src="https://www.youtube.com/embed/hzixp8s4pyg" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 				</div><?php
 			} ?>
 		</div>

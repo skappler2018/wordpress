@@ -71,6 +71,8 @@ function add_custom_meta_box(){
     }
 }
 
+// Felder in Metabox hinzufuegen
+
 function custom_meta_box_html($testimonials){ ?>
 	<div class="fields">
 		<div><label for="first_name">Vorname</label></div>
@@ -94,7 +96,7 @@ function custom_meta_box_html($testimonials){ ?>
 	</div>
 	<div class="fields">
 		<label for="logo">Logo</label>
-		<input type="file" name="fileToUpload" id="logo">
+		<input type="file" name="logoToUpload" id="logo">
 	</div>
 	<div class="fields">
 		<label for="video">Video</label>
@@ -109,6 +111,7 @@ add_action('add_meta_boxes', 'add_custom_meta_box');
 
 
 // Meta-Daten speichern
+
 function saving_postmeta_data($testimonials) { 
 
 	if (array_key_exists('first_name', $_POST)) {
@@ -146,6 +149,14 @@ function saving_postmeta_data($testimonials) {
 			$_POST['url']
 		);
 	}
+	if (array_key_exists('logoToUpload', $_POST)) {
+		update_post_meta(
+			$testimonials,
+			'logoToUpload',
+			$_POST['logoToUpload']
+		);
+	}
+	
 	
 }
 add_action('save_post', 'saving_postmeta_data');
