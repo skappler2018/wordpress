@@ -1,6 +1,4 @@
 <?php
-// Erstellung einer Custom-Settings-Seite
-
 function my_plugin_menu() {
     add_options_page('Belbo Verknüpfung', 'Plugin zur Verwaltung von Kundenreferenzen', 'manage_options', 'belbo-booking', 'my_plugin_options');
 }
@@ -32,12 +30,8 @@ function my_plugin_options() {
      
 		<form method="post" action="options.php"> <?php
 		
-		// Where to Save the Code:
-		// You can either put the code for your options page in your plugin php file (or, for Themes, in functions.php), or you can // create a second file called options.php, for example, and include it using the php include function ...
-		// => deshalb options.php bei action entfernt, dann wieder eingefuegt
-		
-		settings_fields('belbo-option-group'); //The setting fields will know which settings your options page will handle.
-		do_settings_sections('belbo-option-group'); // This function replaces the form-field markup in the form itself. (???) ?>
+			settings_fields('belbo-option-group'); 
+			do_settings_sections('belbo-option-group'); ?>
 			
 			<table class="form-table belbo-booking">
 				<tr valign="top">
@@ -62,16 +56,12 @@ function my_plugin_options() {
 					<th scope="row">Anzahl der Spalten</th>
 					<td>
 						<select name="columns" selected="<?php echo esc_attr(get_option('columns')); ?>"> <?php
-							$options = array(		// Options als Array dargestellt
+							$options = array(
 								'option1' => '1',
 								'option2' => '2',
 								'option3' => '3'
 							);
-							foreach($options as $option) {
-								
-								
-								
-								
+							foreach($options as $option) {		
 								($option == esc_attr(get_option('columns'))) ? 'selected' : ''; ?>
 									<option> <?php echo $option; ?> </option> <?php
 							} ?>

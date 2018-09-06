@@ -1,6 +1,6 @@
 <?php
 
-// Custom Post Types
+// Create custom post type testimonials
 function create_post_type() {
 	
 	register_post_type('testimonials', [

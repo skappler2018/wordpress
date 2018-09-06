@@ -24,24 +24,6 @@
 			?>
 		</div>
 	</div>
-	
-<script type="text/javascript">
-
-$("form").submit(function(){ // Alle Referenzen anzeigen lassen
-	$(".testimonial-content").show();
-}); 
-
-$("select").change(function(){ // Filtern
-	$(".testimonial-content").hide();
-	$(".testimonial-content." + $(this).val()).show();
-});
-
-function test() {
-	alert("hello");
-};
-
-</script>
-
 </body>
 
 </html>
