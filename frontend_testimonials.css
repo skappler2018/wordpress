@@ -1,6 +1,5 @@
 .all-testimonials {
 	width: 100%;
-	margin-bottom: 20px;
 }
 
 .title {
@@ -50,6 +49,7 @@ select {
 
 .all-testimonials {
 	display: grid;
+	grid-gap: 10px;
 }
 
 .grid-1 {
@@ -65,11 +65,11 @@ select {
 }
 
 .testimonial-content {
-	min-width: 300px;
 	max-width: 500px;
-	border: 1px solid grey;
-	margin-right: 10px;
-	margin-bottom: 10px;
+	background: rgba(0,0,0,0.05);
+	padding: 10px;
+	display: flex;
+	flex-direction: column;
 }
 
 img {
@@ -78,4 +78,16 @@ img {
 
 .edit-link {
 	display: none;
+}
+
+iframe {
+	margin: 0px !important;
+}
+
+.thumb {
+	
+	width: 50px;
+    border-radius: 50px;
+    border: 1px solid #ccc;
+	
 }

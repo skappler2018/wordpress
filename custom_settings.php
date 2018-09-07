@@ -1,24 +1,24 @@
 <?php
-function my_plugin_menu() {
-    add_options_page('Belbo Verknüpfung', 'Plugin zur Verwaltung von Kundenreferenzen', 'manage_options', 'belbo-booking', 'my_plugin_options');
+function ft_my_plugin_menu() {
+    add_options_page('Belbo Verknüpfung', 'Kundenreferenzen', 'manage_options', 'belbo-booking', 'ft_my_plugin_options');
 }
 
 if (is_admin()) {
-	add_action('admin_menu', 'my_plugin_menu');
-	add_action('admin_init', 'register_mysettings');
+	add_action('admin_menu', 'ft_my_plugin_menu');
+	add_action('admin_init', 'ft_register_mysettings');
 } else {
 
 }
 
 // The register_setting function should be called in an admin_init action, which runs before every admin page and in particular, options.php, which receives this form
-function register_mysettings() { // Whitelist options
+function ft_register_mysettings() { // Whitelist options
   register_setting('belbo-option-group', 'beispiel');
   register_setting('belbo-option-group', 'background-color');
   register_setting('belbo-option-group', 'color');
   register_setting('belbo-option-group', 'columns');
 }
 
-function my_plugin_options() {
+function ft_my_plugin_options() {
 	
 	if ( !current_user_can( 'manage_options' ) )  {
 			wp_die( __( 'You do not have sufficient permissions to access this page.' ) );
@@ -26,8 +26,12 @@ function my_plugin_options() {
 		
     <div class="wrap">
 	
-		<h2>Einstellungen für Plugin zur Verwaltung von Kundenreferenzen</h2>
+		<h2>Kundenreferenzen</h2>
      
+		<p>
+		
+		</p>
+	 
 		<form method="post" action="options.php"> <?php
 		
 			settings_fields('belbo-option-group'); 
@@ -62,9 +66,13 @@ function my_plugin_options() {
 								'option3' => '3'
 							);
 							foreach($options as $option) {		
-								($option == esc_attr(get_option('columns'))) ? 'selected' : ''; ?>
-									<option> <?php echo $option; ?> </option> <?php
-							} ?>
+							?>
+								<option <?php echo ($option == esc_attr(get_option('columns'))) ? 'selected' : '';?>> 
+									<?php echo $option; ?>
+								</option> 
+							<?php 
+							} 
+							?>
 						</select>
 					</td>
 				</tr>

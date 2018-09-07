@@ -1,4 +1,5 @@
-<?php function testimonials_shortcode($atts) {
+<?php 
+function ft_testimonials_shortcode($atts) {
 	// Three parameters are passed to the shortcode callback function. You can choose to use any number of them including none of them.
 
 	// $atts - an associative array of attributes, or an empty string if no attributes are given
@@ -23,7 +24,7 @@
 	$terms_products = get_terms('products'); ?>
 	
 	<!-- HTML frontend page -->
-	<div style="background-color:<?php echo esc_attr(get_option('background-color')); ?>; color:<?php echo esc_attr(get_option('color')); ?>;">
+	<div style="padding: 10px; background-color:<?php echo esc_attr(get_option('background-color')); ?>; color:<?php echo esc_attr(get_option('color')); ?>;">
 		<div>
 			<form>
 				<input class="button" type="submit" value="Alle Referenzen">
@@ -84,24 +85,45 @@
 				
 				<!-- Show testimonials with custom fields information -->
 				<div class="testimonial-content <?php echo $locationAsCSSClass . " " . $branchAsCSSClass . " " . $productsAsCSSClass; ?>">
-					<div class="logo"> <?php
+					<div class="logo"> 
+					
+					<?php
 						echo get_post_meta( get_the_ID(), 'logoToUpload', true ); ?>
+						
 					</div>
-					<div class="title"> <?php 
-						the_title(); ?>
-					</div>
-					<div class="name"> <?php
+					<div class="name" style="border-bottom: 1px solid rgba(0,0,0,0.1);">
+					<?php 
+					if (has_post_thumbnail( get_the_ID())) {
+					echo "<img class='thumb' src='".get_the_post_thumbnail_url( get_the_ID(), "thumbnail")."' />";} ?>
+					
+						<span>
+					<?php
 						echo get_post_meta( get_the_ID(), 'first_name', true );
-						echo " ".get_post_meta( get_the_ID(), 'last_name', true ); ?>
-					</div>
-					<div class="store"> <?php
-						echo " ".get_post_meta( get_the_ID(), 'store', true ); ?>
+						echo " ".get_post_meta( get_the_ID(), 'last_name', true ); ?><br/>
+						</span>
 					</div>
 					<div class="location"> <?php
 						echo " ".get_post_meta( get_the_ID(), 'Standort', true ); ?>
 					</div>
-					<div> <?php 
-						the_content(); ?>
+					<div style="flex: 1"> <?php 
+						the_content(); 
+						if (get_post_meta( get_the_ID(), 'url', true )) { ?>
+<a href="http://<?php
+						echo " ".get_post_meta( get_the_ID(), 'url', true ); ?>"><?php
+						echo " ".get_post_meta( get_the_ID(), 'store', true ); ?></a>
+						
+						<?php } ?>
+					</div>
+					<div>
+
+						<?php
+						if (get_post_meta( get_the_ID(), 'video', true )) { ?>
+						<iframe src="https://www.youtube.com/embed/<?php
+						echo get_post_meta( get_the_ID(), 'video', true ); ?>" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+						<?php 
+						
+						}
+						?>
 					</div>
 				</div> <?php
 			} ?>
@@ -110,7 +132,9 @@
 	
 	return ob_get_clean();
 }
-add_shortcode('belbo', 'testimonials_shortcode');
+add_shortcode('belbo', 'ft_testimonials_shortcode');
+
+
 
 
 

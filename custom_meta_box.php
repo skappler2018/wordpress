@@ -1,27 +1,27 @@
 <?php
 // Add custom meta box
-function add_custom_meta_box(){
+function ft_add_custom_meta_box(){
 	
     $testimonials = ['testimonials'];
     foreach ($testimonials as $testimonial) {
         add_meta_box(
             'id_box',         
-            'Testimonials Metabox',
-            'custom_meta_box_html',
+            'Testimonials Details',
+            'ft_custom_meta_box_html',
             $testimonial
         );
     }
 }
 
 // Add custom fields to custom meta box
-function custom_meta_box_html($testimonials){ ?>
+function ft_custom_meta_box_html($testimonials){ ?>
 	<div class="fields">
 		<div><label for="first_name">Vorname</label></div>
 		<div><input name="first_name" type="text" id="first_name" value="<?php echo get_post_meta($testimonials->ID, 'first_name', true); ?>"></div>
 	</div>
 	<div class="fields">
-		<label for="last_name">Nachname</label>
-		<input name="last_name" type="text" id="last_name" value="<?php echo get_post_meta($testimonials->ID, 'last_name', true); ?>">
+		<div><label for="last_name">Nachname</label></div>
+		<div><input name="last_name" type="text" id="last_name" value="<?php echo get_post_meta($testimonials->ID, 'last_name', true); ?>"></div>
 	</div>
 	<div class="fields">
 		<label for="store">Unternehmen</label>
@@ -35,23 +35,23 @@ function custom_meta_box_html($testimonials){ ?>
 		<label for="url">URL</label>
 		<input name="url" type="text" id="url" value="<?php echo get_post_meta($testimonials->ID, 'url', true); ?>">
 	</div>
+	<p>
+		Um ein Video einzubinden, gehen Sie wie folgt vor:
+	</p>
+	<ul>
+		<li>Video in YouTube öffnen.</li>
+		<li>Auf Teilen klicken.</li>
+		<li>ID hinter dem Schrägstrich kopieren und in die untere Box einfügen.</li>
+	</ul>
 	<div class="fields">
-		<label for="logo">Logo</label>
-		<input type="file" name="logoToUpload" id="logo">
-	</div>
-	<div class="fields">
-		<label for="video">Video</label>
-		<input type="file" name="fileToUpload" id="video">
-	</div>
-	<div class="fields">
-		<label for="picture">Bild</label>
-		<input type="file" name="fileToUpload" id="picture">
-	</div><?php
+		<label for="video">Video-ID</label>
+		<input type="text" name="video" id="video" value="<?php echo get_post_meta($testimonials->ID, 'video', true); ?>">
+	</div> <?php
 }
-add_action('add_meta_boxes', 'add_custom_meta_box');
+add_action('add_meta_boxes', 'ft_add_custom_meta_box');
 
 // Save data from custom fields
-function saving_postmeta_data($testimonials) { 
+function ft_saving_postmeta_data($testimonials) { 
 
 	if (array_key_exists('first_name', $_POST)) {
 		update_post_meta(
@@ -88,6 +88,13 @@ function saving_postmeta_data($testimonials) {
 			$_POST['url']
 		);
 	}
+	if (array_key_exists('video', $_POST)) {
+		update_post_meta(
+			$testimonials,
+			'video',
+			$_POST['video']
+		);
+	}
 	if (array_key_exists('logoToUpload', $_POST)) {
 		update_post_meta(
 			$testimonials,
@@ -96,6 +103,6 @@ function saving_postmeta_data($testimonials) {
 		);
 	}
 }
-add_action('save_post', 'saving_postmeta_data');
+add_action('save_post', 'ft_saving_postmeta_data');
 
 

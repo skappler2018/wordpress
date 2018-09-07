@@ -1,7 +1,7 @@
 <?php
 
 // Create custom post type testimonials
-function create_post_type() {
+function ft_create_post_type() {
 	
 	register_post_type('testimonials', [
 		'labels' => [
@@ -15,4 +15,4 @@ function create_post_type() {
 		]
 	]);
 }
-add_action('init', 'create_post_type');
+add_action('init', 'ft_create_post_type');
