@@ -2,16 +2,16 @@
 
 /*
 Plugin Name: Filterable Testimonials
-Description: Test111
-Author: sk
+Description: Plugin for filtering and administering of testimonials 
+Author: Sabine Kappler
 Version: 1.0
 Author URI: https://belbo.com
 */	
 
-include('custom_post_type.php');
-include('custom_meta_box.php');
-include('shortcode.php');
-include('custom_settings.php');
+include('custom_post_type.php'); // To create custom post type.
+include('custom_meta_box.php'); // To add custom meta box with custom fields.
+include('shortcode.php'); // To create the shortcode with the frontend content. 
+include('custom_settings.php'); // To add options for custom settings.
 
 
 // admin_enqueue_scripts is the first action hooked into the admin scripts actions.
@@ -20,7 +20,7 @@ include('custom_settings.php');
 // Add custom admin_testimonials.css
 function ft_register_plugin_styles_admin() {
 	
-	wp_register_style('admin_testimonials', plugins_url('filterable-testimonials/admin_testimonials.css'));
+	wp_register_style('admin_testimonials', plugins_url('admin_testimonials.css', __FILE__));
 	wp_enqueue_style('admin_testimonials');
 }
 add_action('admin_enqueue_scripts', 'ft_register_plugin_styles_admin');
@@ -28,7 +28,7 @@ add_action('admin_enqueue_scripts', 'ft_register_plugin_styles_admin');
 // Add custom frontend_testimonials.css
 function ft_register_plugin_styles_frontend() {
 	
-	wp_register_style('frontend_testimonials', plugins_url('filterable-testimonials/frontend_testimonials.css'));
+	wp_register_style('frontend_testimonials', plugins_url('frontend_testimonials.css', __FILE__));
 	wp_enqueue_style('frontend_testimonials');
 }
 add_action('wp_enqueue_scripts', 'ft_register_plugin_styles_frontend'); 
@@ -36,8 +36,8 @@ add_action('wp_enqueue_scripts', 'ft_register_plugin_styles_frontend');
 // Add custom testimonials.js
 function ft_register_plugin_javascript() {
 	
-	wp_register_script('testimonials', plugins_url('filterable-testimonials/testimonials.js'));
-	wp_enqueue_script('testimonials');
+	wp_register_script('testimonials', plugins_url('testimonials.js', __FILE__));
+	wp_enqueue_script('testimonials', false);
 }
 add_action('wp_enqueue_scripts', 'ft_register_plugin_javascript');
 

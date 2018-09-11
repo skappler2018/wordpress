@@ -12,7 +12,6 @@ if (is_admin()) {
 
 // The register_setting function should be called in an admin_init action, which runs before every admin page and in particular, options.php, which receives this form
 function ft_register_mysettings() { // Whitelist options
-  register_setting('belbo-option-group', 'beispiel');
   register_setting('belbo-option-group', 'background-color');
   register_setting('belbo-option-group', 'color');
   register_setting('belbo-option-group', 'columns');
@@ -28,8 +27,9 @@ function ft_my_plugin_options() {
 	
 		<h2>Kundenreferenzen</h2>
      
-		<p>
-		
+		<p class="instruction">
+			Auf dieser Seite können Sie die Hintergrundfarbe, die Schriftfarbe und die Anzahl der angezeigten Spalten ändern. </br>
+			Die Farbe kann als Name oder als Hexadezimalzahl (in der Form #000000) eingegeben werden.
 		</p>
 	 
 		<form method="post" action="options.php"> <?php

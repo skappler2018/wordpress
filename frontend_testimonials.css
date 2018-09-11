@@ -2,12 +2,12 @@
 	width: 100%;
 }
 
-.title {
-	display: none;
+.ft-filter {
+	
 }
 
-article {
-	background-color: red;
+.title {
+	display: none;
 }
 
 .hentry {
@@ -15,7 +15,7 @@ article {
 	margin: 0px;
 }
 
-.button {
+.ft-button {
     background-color: lightgrey;
     border: 1px solid black;
     color: black;
@@ -72,10 +72,6 @@ select {
 	flex-direction: column;
 }
 
-img {
-	width: 100%;
-}
-
 .edit-link {
 	display: none;
 }
@@ -90,4 +86,8 @@ iframe {
     border-radius: 50px;
     border: 1px solid #ccc;
 	
+}
+
+.name {
+	border-bottom: 1px solid rgba(0,0,0,0.1);
 }
