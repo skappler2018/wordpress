@@ -4,7 +4,7 @@
 Plugin Name: Filterable Testimonials
 Description: Plugin for filtering and administering of testimonials 
 Author: Sabine Kappler
-Version: 1.0
+Version: 1.0.0
 Author URI: https://belbo.com
 */	
 

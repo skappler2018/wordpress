@@ -33,37 +33,41 @@ function ft_testimonials_shortcode($atts) {
 		</div>
 		
 		<!-- Select boxes -->
-		<div class="all-select-boxes ft-filter">
-			<div class="select-box"> <?php
-				if (count($terms) > 0) { ?>
+		<div class="all-select-boxes ft-filter"> <?php
+		
+			if (count($terms) > 0) { ?>
+				<div class="select-box"> 
 					<select>  
 						<option value="">Auswahl nach Standort</option><?php
 						foreach($terms as $term){ ?>
 							<option value="<?php echo $term->name; ?>"><?php echo $term->name; ?></option> <?php
 						} ?>
-					</select> <?php
-				} ?>
-			</div>
-			<div class="select-box"> <?php
-				if (count($terms) > 0) { ?>
+					</select>
+				</div> <?php
+			} 
+			
+			if (count($terms_branch) > 0) { ?>
+				<div class="select-box"> 
 					<select>  
 						<option value="">Auswahl nach Branche</option> <?php
 						foreach($terms_branch as $term_branch){ ?>
 							<option value="<?php echo $term_branch->name; ?>"> <?php echo $term_branch->name; ?> </option> <?php
 						} ?>
-					</select> <?php
-				} ?>
-			</div>
-			<div class="select-box"> <?php
-				if (count($terms) > 0) { ?>
+					</select> 	
+				</div> <?php
+			} 
+			
+			if (count($terms_products) > 0) { ?>
+				<div class="select-box">
 					<select>  
 						<option value="">Auswahl nach Produkt</option> <?php
 						foreach($terms_products as $term_products){ ?>
 							<option value="<?php echo $term_products->name; ?>"> <?php echo $term_products->name; ?> </option>  <?php
 						} ?>
-					</select> <?php
-				} ?>
-			</div>
+					</select> 
+				</div> <?php
+			} ?>
+			
 		</div>
 		
 		<!-- Show all testimonials -->
@@ -75,20 +79,26 @@ function ft_testimonials_shortcode($atts) {
 
 				$locationtags = get_the_terms(get_the_ID(), 'location'); // Retrieve terms for tag 'location'
 				$locationAsCSSClass = "";
-				foreach($locationtags as $term) {
-					$locationAsCSSClass .= $term->name." ";
+				if ($locationtags > 0) {
+					foreach($locationtags as $term) {
+						$locationAsCSSClass .= $term->name." ";
+					}
 				}
 				
 				$branchtags = get_the_terms(get_the_ID(), 'branch'); // Retrieve terms for tag 'branch'
 				$branchAsCSSClass = "";
-				foreach($branchtags as $term) {
-					$branchAsCSSClass .= $term->name." ";
+				if ($branchtags > 0) {
+					foreach($branchtags as $term) {
+						$branchAsCSSClass .= $term->name." ";
+					}
 				}
 				
 				$productstags = get_the_terms(get_the_ID(), 'products'); // Retrieve terms for tag 'products'
 				$productsAsCSSClass = "";
-				foreach($productstags as $term) {
-					$productsAsCSSClass .= $term->name." ";
+				if ($productstags > 0) {
+					foreach($productstags as $term) {
+						$productsAsCSSClass .= $term->name." ";
+					}
 				} ?>
 				
 				<!-- Show testimonials with custom fields information -->

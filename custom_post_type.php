@@ -1,6 +1,15 @@
 <?php
-
-// Create custom post type testimonials
+/**
+* Create custom post type testimonials.
+*
+* By creating a custom post type testimonials this type will be added automatically to the WordPress menu.
+* Thus the plugin can be accessed easily.
+*
+* @since 1.0.0
+*
+* @param string $post_type. Post type.
+* @param array $args optional. An array of arguments.
+*/ 
 function ft_create_post_type() {
 	
 	register_post_type('testimonials', [
