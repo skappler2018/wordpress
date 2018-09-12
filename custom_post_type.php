@@ -20,8 +20,9 @@ function ft_create_post_type() {
 		'public' => true,
 		'has_archive' => true,
 		'taxonomies' => ['branch', 'location', 'products'],
-		'supports' => ['editor', 'thumbnail', 'custom-fields', 'title'
-		]
+		'supports' => ['editor', 'thumbnail', 'custom-fields', 'title']
 	]);
 }
 add_action('init', 'ft_create_post_type');
+
+

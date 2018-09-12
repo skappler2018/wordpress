@@ -1,20 +1,11 @@
 <?php 
-function ft_testimonials_shortcode($atts) {
-	
-	// Three parameters are passed to the shortcode callback function. You can choose to use any number of them including none of them.
-
-	// $atts - an associative array of attributes, or an empty string if no attributes are given
-	// $content - the enclosed content (if the shortcode is used in its enclosing form)
-	// $tag - the shortcode tag, useful for shared callback functions
-
-	$atts = shortcode_atts([
-		'id' => 'client_testimonials'
-		], $atts, 'belbo');
+function ft_testimonials_shortcode() {
 
 	$args = [
 		'post_type' => 'testimonials',
 		'posts_per_page' => 10
 	];
+	
 	$loop = new WP_Query($args);
 	
 	ob_start(); 
@@ -38,9 +29,9 @@ function ft_testimonials_shortcode($atts) {
 			if (count($terms) > 0) { ?>
 				<div class="select-box"> 
 					<select>  
-						<option value="">Auswahl nach Standort</option><?php
+						<option value="">Auswahl nach Standort</option> <?php
 						foreach($terms as $term){ ?>
-							<option value="<?php echo $term->name; ?>"><?php echo $term->name; ?></option> <?php
+							<option value="<?php echo $term->name; ?>"><?php echo $term->name; ?></option><?php
 						} ?>
 					</select>
 				</div> <?php
@@ -51,7 +42,7 @@ function ft_testimonials_shortcode($atts) {
 					<select>  
 						<option value="">Auswahl nach Branche</option> <?php
 						foreach($terms_branch as $term_branch){ ?>
-							<option value="<?php echo $term_branch->name; ?>"> <?php echo $term_branch->name; ?> </option> <?php
+							<option value="<?php echo $term_branch->name; ?>"><?php echo $term_branch->name; ?></option> <?php
 						} ?>
 					</select> 	
 				</div> <?php
@@ -62,7 +53,7 @@ function ft_testimonials_shortcode($atts) {
 					<select>  
 						<option value="">Auswahl nach Produkt</option> <?php
 						foreach($terms_products as $term_products){ ?>
-							<option value="<?php echo $term_products->name; ?>"> <?php echo $term_products->name; ?> </option>  <?php
+							<option value="<?php echo $term_products->name; ?>"><?php echo $term_products->name; ?></option> <?php
 						} ?>
 					</select> 
 				</div> <?php
@@ -145,7 +136,7 @@ function ft_testimonials_shortcode($atts) {
 	
 	return ob_get_clean();
 }
-add_shortcode('belbo', 'ft_testimonials_shortcode');
+add_shortcode('testimonialsShortcode', 'ft_testimonials_shortcode');
 
 
 

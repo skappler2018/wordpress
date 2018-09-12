@@ -19,8 +19,8 @@ function ft_register_mysettings() { // Whitelist options
 
 function ft_my_plugin_options() {
 	
-	if ( !current_user_can( 'manage_options' ) )  {
-			wp_die( __( 'You do not have sufficient permissions to access this page.' ) );
+	if (!current_user_can('manage_options')) {
+		wp_die(__('You do not have sufficient permissions to access this page.'));
 	} ?>
 		
     <div class="wrap">
@@ -65,14 +65,11 @@ function ft_my_plugin_options() {
 								'option2' => '2',
 								'option3' => '3'
 							);
-							foreach($options as $option) {		
-							?>
-								<option <?php echo ($option == esc_attr(get_option('columns'))) ? 'selected' : '';?>> 
+							foreach($options as $option) { ?>
+								<option<?php echo ($option == esc_attr(get_option('columns'))) ? 'selected' : ''; ?>> 
 									<?php echo $option; ?>
-								</option> 
-							<?php 
-							} 
-							?>
+								</option> <?php 
+							} ?>
 						</select>
 					</td>
 				</tr>

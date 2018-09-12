@@ -2,10 +2,6 @@
 	width: 100%;
 }
 
-.ft-filter {
-	
-}
-
 .title {
 	display: none;
 }
@@ -72,11 +68,9 @@ iframe {
 }
 
 .thumb {
-	
 	width: 50px;
     border-radius: 50px;
-    border: 1px solid #ccc;
-	
+    border: 1px solid #ccc;	
 }
 
 .name {

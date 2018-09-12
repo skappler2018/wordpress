@@ -1,5 +1,4 @@
 <?php
-
 /*
 Plugin Name: Filterable Testimonials
 Description: Plugin for filtering and administering of testimonials 
@@ -12,10 +11,6 @@ include('custom_post_type.php'); // To create custom post type.
 include('custom_meta_box.php'); // To add custom meta box with custom fields.
 include('shortcode.php'); // To create the shortcode with the frontend content. 
 include('custom_settings.php'); // To add options for custom settings.
-
-
-// admin_enqueue_scripts is the first action hooked into the admin scripts actions.
-// It ist used for enqueuing both scripts and styles (!).
 
 // Add custom admin_testimonials.css
 function ft_register_plugin_styles_admin() {

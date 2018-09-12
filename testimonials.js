@@ -8,5 +8,4 @@ $(function() {
 		$(".testimonial-content").hide();
 		$(".testimonial-content." + $(this).val()).show();
 	});
-
 });
